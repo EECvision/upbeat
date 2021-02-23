@@ -1,0 +1,8 @@
+.playlist i {
+    transition: all 500ms ease-in-out;
+}
+
+.playlist:hover i {
+    transform: scale(1.5);
+}
+
