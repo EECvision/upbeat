@@ -11,7 +11,7 @@ const Form = ({ setSearchEntry, history, match }) => {
     }
     return (
         <form
-            className="relative w-full max-w-md flex items-center justify-end rounded-l bg-purple-800 h-10 py-1 mt-8"
+            className="relative w-full max-w-md flex items-center justify-end rounded-l bg-purple-900 h-10 py-1 mt-8"
             onSubmit={ (e) => {
                 e.preventDefault()
                 setSearchEntry(searchEntry)

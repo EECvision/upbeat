@@ -4,14 +4,15 @@ import iconFacebook from '../../assets/icon-facebook.svg';
 import iconYoutube from '../../assets/icon-youtube.svg';
 import iconInstagram from '../../assets/icon-instagram.svg';
 import iconTwitter from '../../assets/icon-twitter.svg';
+import { withRouter } from 'react-router-dom';
 
-const Footer = () => {
+const Footer = ({history}) => {
   return (
     <div className="w-full md:px-0 flex flex-col items-center justify-start">
       <div className="w-full flex justify-center bg-gray-100 px-4">
         <div className="w-full max-w-5xl flex flex-col md:flex-row items-center justify-between py-12">
           <div className="text-center md:text-left text-pink-700 text-3xl sm:text-4xl leading-tight mb-12 md:mb-0">Keep your life<br />smooth with our music today!</div>
-          <Button inverted>Get Started</Button>
+          <Button clickHandler={()=>history.push('/your-music')} inverted>Get Started</Button>
         </div>
       </div>
       <div className="w-full flex justify-center bg-gray-900 opacity-90 md:px-0 py-12 px-4">
@@ -37,7 +38,7 @@ const Footer = () => {
       </div>
       <div className="w-full flex justify-center py-4 px-4 md:px-0">
         <div className="w-full max-w-4xl flex flex-wrap justify-center md:justify-start items-center bg-gray-100 text-gray-500">
-          <div style={{ fontFamily: 'cursive' }} className="text-gray-600 text-xl font-medium cursor-pointer mr-12">Nuf9ja.com</div>
+          <div style={{ fontFamily: 'sans-serif' }} className="text-gray-600 text-xl font-medium cursor-pointer mr-12">Nuf9ja</div>
           <div> All rights Reserved</div>
         </div>
       </div>
@@ -45,4 +46,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default withRouter(Footer)
