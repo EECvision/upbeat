@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactJkMusicPlayer from 'react-jinke-music-player'
-import AudioContainer from './Audio-menu';
+import AudioContainer from './Audio-container';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import {
@@ -38,13 +38,17 @@ const Audio = ({ musicList, category, searchEntry }) => {
           : null
       }
 
-      <div className="fixed top-48 w-full text-right pr-1 pt-1 z-10">
-        <div onClick={() => setTogglePlaylist(!togglePlaylist)} className="w-auto cursor-pointer inline-flex flex-col items-center bg-gray-300 rounded-lg p-1">
-          <div className="text-xs border-b border-pink-700 text-purple-600 font-medium">toggle Playlist</div>
-          <i className="animate-pulse text-2xl text-purple-900 fas fa-arrow-alt-circle-down"></i>
-        </div>
-      </div>
-
+      {
+        !togglePlaylist
+          ?
+          <div className="fixed top-0 w-full text-right pr-1 pt-1 z-10">
+            <div onClick={() => setTogglePlaylist(!togglePlaylist)} className="w-auto cursor-pointer inline-flex flex-col items-center bg-gray-300 rounded-lg p-1">
+              <div className="text-xs border-b border-pink-700 text-purple-600 font-medium">toggle Playlist</div>
+              <i className="animate-pulse text-2xl text-purple-900 fas fa-arrow-alt-circle-down"></i>
+            </div>
+          </div>
+          : null
+      }
       <div className="w-full">
         {
           musicCategory.length === 0

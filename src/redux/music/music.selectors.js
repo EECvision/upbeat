@@ -16,3 +16,8 @@ export const selectSearchEntry = createSelector(
     [selectMusic],
     music => music.searchEntry
 )
+
+export const selectIsFetching = createSelector(
+    [selectMusic],
+    music => music.isFetching
+)

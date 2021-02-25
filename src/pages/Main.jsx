@@ -10,7 +10,7 @@ const Main = ({ match, fetchMusic }) => {
 
     useEffect(()=>{
         fetchMusic()
-    })
+    },[fetchMusic])
 
     return (
         <div className="w-full">
