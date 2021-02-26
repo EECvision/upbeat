@@ -7,7 +7,7 @@ const NavLinks = ({children, link}) => (
 const Navigation = () => {
     return (
         <nav className="w-full max-w-lg mt-8">
-            <ul className="w-full flex flex-wrap justify-between items-center">
+            <ul className="w-full flex flex-wrap justify-evenly items-center">
                 <NavLinks link="/your-music/audio">Audio</NavLinks>
                 <NavLinks link="#">Video</NavLinks>
                 <NavLinks link="/your-music/gospel">Gospel</NavLinks>

@@ -13,7 +13,7 @@ export const DATA = [
     }, 
     {
         id: 3,
-        text: 'Play music with a favorite player in browser without internet connection',
+        text: 'Play music with a favorite player in browser',
         img: 'offline',
         reverse: false
     }

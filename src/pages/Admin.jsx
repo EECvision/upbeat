@@ -8,13 +8,12 @@ const Admin = () => {
   return (
     <div className="w-full flex justify-center">
       <div className="absolute w-full max-w-4xl ">
-        <button className="bg-black text-green-500 px-6 rounded-full shadow-2xl border border-black" onClick={() => this.props.fetchFilesStart()}>Refresh</button>
+        <button className="bg-black text-green-500 px-6 rounded-full shadow-2xl border border-black" onClick={() => fetchFilesStart()}>Refresh</button>
       </div>
       <AdminDashboard history={history} match={match} />
     </div>
   )
 }
-
 
 const mapDispatchToProps = dispatch => ({
   fetchFilesStart: () => dispatch(fetchFilesStart())

@@ -16,14 +16,13 @@ const Audio = ({ musicList, category, searchEntry }) => {
   const [playList, setPlayList] = useState([]);
   const [togglePlaylist, setTogglePlaylist] = useState(false);
 
-  console.log(searchEntry);
   const musicCategory = musicList
     .filter(file => file.fileMetadata.customMetadata.category === category)
     .filter(file => file.fileMetadata.name.toLowerCase().includes(searchEntry.toLowerCase()));
 
 
   return (
-    <div className="relative w-full flex flex-col items-center justify-center">
+    <div className="relative w-full flex items-center justify-end">
       {
         togglePlaylist ?
 
@@ -41,12 +40,10 @@ const Audio = ({ musicList, category, searchEntry }) => {
       {
         !togglePlaylist
           ?
-          <div className="fixed top-0 w-full text-right pr-1 pt-1 z-10">
-            <div onClick={() => setTogglePlaylist(!togglePlaylist)} className="w-auto cursor-pointer inline-flex flex-col items-center bg-gray-300 rounded-lg p-1">
-              <div className="text-xs border-b border-pink-700 text-purple-600 font-medium">toggle Playlist</div>
+            <div onClick={() => setTogglePlaylist(!togglePlaylist)} className="fixed top-0 z-10 w-auto cursor-pointer inline-flex flex-col items-center bg-gray-200 rounded-lg p-1 m-1">
+              <div className="text-xs border-b border-pink-700 text-purple-600 font-medium">toggle <br></br> Playlist</div>
               <i className="animate-pulse text-2xl text-purple-900 fas fa-arrow-alt-circle-down"></i>
             </div>
-          </div>
           : null
       }
       <div className="w-full">

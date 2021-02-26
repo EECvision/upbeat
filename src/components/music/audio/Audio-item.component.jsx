@@ -20,14 +20,14 @@ const AudioItem = ({ fileUrl, fileMetadata, imageUrl, addToPlayList }) => {
     })
   }
   return (
-    <div className="w-full max-w-6xl mb-8 text-sm md:text-base">
+    <div className="w-full mb-8 text-sm md:text-base">
       {
         fileUrl.length === 0
           ?
           <div>No item found </div>
           :
           <React.Fragment>
-            <div className="w-full flex flex-col lg:flex-row items-center sm:items-start lg:items-center justify-between py-2 px-4 border-l-4 border border-gray-500 rounded-l-lg shadow-xl">
+            <div className="w-full flex flex-col lg:flex-row items-center sm:items-start lg:items-center justify-between py-2 px-4 md:border-l-4 border md:border-gray-500 md:rounded-l-lg shadow-xl">
               <div className="w-full lg:max-w-xl flex items-center justify-center">
                 <img className="w-12 h-12 md:w-16 md:h-16 lg:w-24 lg:h-24 rounded-full" src={imageUrl} alt="poster" />
                 <div className="ml-4 h-24 w-full flex flex-col items-center justify-evenly">
@@ -70,7 +70,7 @@ const AudioItem = ({ fileUrl, fileMetadata, imageUrl, addToPlayList }) => {
                   </div>
                 </div>
               </div>
-              <div className={`w-full h-24 lg:max-w-md flex flex-col items-center justify-between`}>
+              <div className={`w-full h-24 lg:max-w-2xl flex flex-col items-center justify-between`}>
                 <div className=" w-full h-12 flex items-center justify-center bg-gray-100 rounded-lg">
                   <audio className="w-full h-full focus:outline-none" controls src={fileUrl}></audio>
                 </div>

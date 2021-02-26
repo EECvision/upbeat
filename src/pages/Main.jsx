@@ -1,17 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../components/music/header/Header';
 import Audio from '../components/music/audio/Audio';
 import Video from '../components/music/video/Video';
-import { connect } from 'react-redux';
-import { fetchMusicStart } from '../redux/music/music.actions';
 
-const Main = ({ match, fetchMusic }) => {
-
-    useEffect(()=>{
-        fetchMusic()
-    },[fetchMusic])
-
+const Main = ({ match }) => {
     return (
         <div className="w-full">
             <Header />
@@ -27,8 +20,4 @@ const Main = ({ match, fetchMusic }) => {
 }
 
 
-const mapDispatchToProps = dispatch => ({
-    fetchMusic: () => dispatch(fetchMusicStart())
-})
-
-export default connect(null, mapDispatchToProps)(Main);
+export default Main;

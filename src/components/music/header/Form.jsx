@@ -11,7 +11,7 @@ const Form = ({ setSearchEntry, history, match }) => {
     }
     return (
         <form
-            className="relative w-full max-w-md flex items-center justify-end rounded-l bg-gradient-to-r from-gray-600 to-purple-800 h-10 py-1 mt-8"
+            className="relative w-full max-w-md flex items-center justify-end rounded-l bg-purple-600 h-10 py-1 mt-8"
             onSubmit={ (e) => {
                 e.preventDefault()
                 setSearchEntry(searchEntry)
@@ -28,7 +28,7 @@ const Form = ({ setSearchEntry, history, match }) => {
             />
             <button
                 type='submit'
-                className={`w-1/12 h-full focus: text-gray-200 flex items-center justify-center border border-white z-10 mr-1`}
+                className={`w-1/12 h-full focus: text-gray-200 flex items-center justify-center border border-white mr-1`}
             >
                 <i className="w-4 fas fa-search"></i>
             </button> 
