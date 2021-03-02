@@ -29,7 +29,7 @@ function App({currentUser}) {
         <Route exact path='/about' component={About}/>
         <Route exact path='/contact' component={Contact}/>
         <Route path='/account/login' render={ props => !currentUser ? <UserSignIn {...props}/> : <Redirect to='/admin'/>}/>
-        <Route exact path='/admin' render={ props => false ? <Redirect to='/account/login'/> : <Admin {...props}/>} />
+        <Route exact path='/admin' render={ props => !currentUser ? <Redirect to='/account/login'/> : <Admin {...props}/>} />
         <Route path='/admin/upload/:id' component={UploadForm} />
         <Route component={NotFound}/>
       </Switch>

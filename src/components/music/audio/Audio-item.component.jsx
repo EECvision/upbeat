@@ -35,7 +35,7 @@ const AudioItem = ({ fileUrl, fileMetadata, imageUrl, addToPlayList, togglePlayl
                 <img className="w-12 h-12 md:w-16 md:h-16 lg:w-24 lg:h-24 rounded-full" src={imageUrl} alt="poster" />
                 <div className="ml-4 h-24 w-full flex flex-col items-center justify-evenly">
                   <div className="w-full flex items-center justify-between">
-                    <div className="cursor-default text-gray-700 text-base"> {fileMetadata.name} </div>
+                    <div className="cursor-default text-gray-700 text-base w-40 truncate sm:w-auto"> {fileMetadata.name} </div>
                     <div className="w-24 ml-2 flex items-center justify-center ">
                       {`${(fileMetadata.size / 1049367).toFixed(2)} mb`}
                     </div>
