@@ -7,14 +7,17 @@ import Category from './Category';
 import UpLoadTab from './UploadAction';
 import {
   setCategory,
+  uploadFileSuccess
 } from '../../redux/files/files.actions';
 import {
   selectCategory,
   selectIsUploading,
+  selectError,
+  selectSuccess
 } from '../../redux/files/files.selector';
 
 
-const UploadForm = ({ isUploading, setCategory, category, match, history }) => {
+const UploadForm = ({ isUploading, setCategory, category, match, history, error, success, setSuccess }) => {
   const [fileStatus, setFileStatus] = useState('no file selected')
   const [musicUrl, setMusicUrl] = useState([]);
   const [imageUrl, setImageUrl] = useState([]);
@@ -29,10 +32,12 @@ const UploadForm = ({ isUploading, setCategory, category, match, history }) => {
 
   function handlemusicUrl() {
     musicInputEl.current.click();
+    setSuccess(null);
   }
 
   function handleimageUrl() {
-    imageInputEl.current.click()
+    imageInputEl.current.click();
+    setSuccess(null);
   }
 
   function handleImageChange(e) {
@@ -129,10 +134,20 @@ const UploadForm = ({ isUploading, setCategory, category, match, history }) => {
             </button>
           </div>
         </div>
+        {
+          success ? 
+            <div className="w-full mb-6 text-blue-600 font-medium shadow-lg p-6">{success}</div>
+          : null
+        }
+        {
+          error ?
+            <div className="w-full mb-6 text-red-600 font-medium shadow-lg p-6">!! {error}</div>
+          : null
+        }
         <div className="w-full">
           <div className="font-medium">PREVIEW</div>
           <div>Description: {fileStatus}</div>
-          <div>{isUploading}</div>
+          <div><meter className="w-full" id="disk_c" value={isUploading} min="0" max="100"/></div>
           {
             match.params.id === 'audio' || match.params.id === 'gospel' || match.params.id === 'highlife'
               ?
@@ -141,7 +156,7 @@ const UploadForm = ({ isUploading, setCategory, category, match, history }) => {
               <VideoPreview {...musicUrl} img={imageUrl}/>
           }
           <div className="w-full flex items-center justify-between">
-            <button onClick={() => history.goBack()} className="border border-black px-8 py-3 focus:outline-none mr-4 hover:bg-gray-700 hover:text-white">Done</button>
+            <button onClick={() =>{setSuccess(null); history.push('/admin')}} className="border border-black px-8 py-3 focus:outline-none mr-4 hover:bg-gray-700 hover:text-white">Done</button>
             <UpLoadTab musicUrl={musicUrl} imageUrl={imageUrl} artistName={artistName}>Upload</UpLoadTab>
           </div>
         </div>
@@ -153,10 +168,13 @@ const UploadForm = ({ isUploading, setCategory, category, match, history }) => {
 const mapStateToProps = createStructuredSelector({
   category: selectCategory,
   isUploading: selectIsUploading,
+  success: selectSuccess,
+  error: selectError
 })
 
 const mapDispatchToProps = dispatch => ({
   setCategory: value => dispatch(setCategory(value)),
+  setSuccess: val => dispatch(uploadFileSuccess(val))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UploadForm);

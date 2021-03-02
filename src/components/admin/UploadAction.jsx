@@ -5,23 +5,26 @@ import { storageRef, firebas } from '../../firebase/firebase.utils';
 import {
   fileUploading,
   uploadFile,
+  uploadFileError,
+  uploadFileSuccess
 } from '../../redux/files/files.actions';
 import {
   selectFileList,
   selectCategory
 } from '../../redux/files/files.selector';
 
-const UploadTab = ({ uploadFile, fileUploading, fileList, musicUrl, imageUrl, category, artistName, children }) => {
+const UploadTab = ({ uploadFile, fileUploading, fileList, musicUrl, imageUrl, category, artistName, children, setError, setSuccess }) => {
 
   const handleFileUpload = (files, music, image) => {
+    setSuccess(null);
 
-    if (Object.keys(music).length === 0) return console.log('cannot upload an empty music file');
-    if (Object.keys(image).length === 0) return console.log('cannot upload an empty image');
+    if (Object.keys(music).length === 0) return setError('cannot upload an empty music file');
+    if (Object.keys(image).length === 0) return setError('cannot upload an empty image');
 
     const isExisting = files.find(f =>
       f.fileMetadata.name === music.url.name
     )
-    if (isExisting) return console.log('file already exist');
+    if (isExisting) return setError('audio file already exist');
 
     getUrl(music.url.name, music, image)
 
@@ -54,22 +57,29 @@ const UploadTab = ({ uploadFile, fileUploading, fileList, musicUrl, imageUrl, ca
           fileUploading(progress);
           switch (snapshot.state) {
             case firebas.storage.TaskState.PAUSED:
+              setError('file upload paused')
               break;
             case firebas.storage.TaskState.RUNNING:
+              setSuccess('file upload in progress...')
               break;
             default:
+              setError(null)
               break;
           }
         },
         (error) => {
           switch (error.code) {
             case 'storage/unauthorized':
+              setError('file upload unauthorized')
               break;
             case 'storage/canceled':
+              setError('file upload canceled')
               break;
             case 'storage/unknown':
+              setError('unknow action please retry')
               break;
             default:
+              setError(null)
               break;
           }
         },
@@ -100,6 +110,8 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => ({
   fileUploading: val => dispatch(fileUploading(val)),
   uploadFile: file => dispatch(uploadFile(file)),
+  setSuccess: scssVal => dispatch(uploadFileSuccess(scssVal)),
+  setError: errVal => dispatch(uploadFileError(errVal))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(UploadTab);
 

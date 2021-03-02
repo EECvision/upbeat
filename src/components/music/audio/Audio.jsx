@@ -5,16 +5,15 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import {
   selectMusicList,
-  selectSearchEntry
+  selectSearchEntry,
+  selectTogglePlaylist
 } from '../../../redux/music/music.selectors';
 
 import 'react-jinke-music-player/assets/index.css'
 
 
-const Audio = ({ musicList, category, searchEntry }) => {
-
+const Audio = ({ musicList, category, searchEntry, togglePlaylist }) => {
   const [playList, setPlayList] = useState([]);
-  const [togglePlaylist, setTogglePlaylist] = useState(false);
 
   const musicCategory = musicList
     .filter(file => file.fileMetadata.customMetadata.category === category)
@@ -36,16 +35,6 @@ const Audio = ({ musicList, category, searchEntry }) => {
           />
           : null
       }
-
-      {
-        !togglePlaylist
-          ?
-            <div onClick={() => setTogglePlaylist(!togglePlaylist)} className="fixed top-0 z-10 w-auto cursor-pointer inline-flex flex-col items-center bg-gray-200 rounded-lg p-1 m-1">
-              <div className="text-xs border-b border-pink-700 text-purple-600 font-medium">toggle <br></br> Playlist</div>
-              <i className="animate-pulse text-2xl text-purple-900 fas fa-arrow-alt-circle-down"></i>
-            </div>
-          : null
-      }
       <div className="w-full">
         {
           musicCategory.length === 0
@@ -64,7 +53,8 @@ const Audio = ({ musicList, category, searchEntry }) => {
 
 const mapStateToProps = createStructuredSelector({
   musicList: selectMusicList,
-  searchEntry: selectSearchEntry
+  searchEntry: selectSearchEntry,
+  togglePlaylist: selectTogglePlaylist
 })
 
 export default connect(mapStateToProps)(Audio);

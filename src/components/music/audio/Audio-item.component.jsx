@@ -1,5 +1,7 @@
 import React from 'react';
 import './audio-item.css';
+import { connect } from 'react-redux';
+import { togglePlaylist } from '../../../redux/music/music.actions';
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -10,7 +12,7 @@ import {
 } from 'react-share'
 
 
-const AudioItem = ({ fileUrl, fileMetadata, imageUrl, addToPlayList }) => {
+const AudioItem = ({ fileUrl, fileMetadata, imageUrl, addToPlayList, togglePlaylist }) => {
   const handleClick = () => {
     addToPlayList({
       name: fileMetadata.name,
@@ -18,6 +20,7 @@ const AudioItem = ({ fileUrl, fileMetadata, imageUrl, addToPlayList }) => {
       cover: imageUrl,
       singer: fileMetadata.customMetadata.artistName
     })
+    togglePlaylist()
   }
   return (
     <div className="w-full mb-8 text-sm md:text-base">
@@ -88,5 +91,8 @@ const AudioItem = ({ fileUrl, fileMetadata, imageUrl, addToPlayList }) => {
   )
 }
 
+const mapDispatchToProps = dispatch => ({
+  togglePlaylist: ()=> dispatch(togglePlaylist())
+})
 
-export default AudioItem;
+export default connect(null,mapDispatchToProps)(AudioItem);

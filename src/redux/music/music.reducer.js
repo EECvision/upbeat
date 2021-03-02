@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   musicList: [],
   searchEntry: '',
   isFetching: false,
+  togglePlaylist: false,
   error: null
 }
 
@@ -39,6 +40,11 @@ const musicReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         audioList: addFileToPlayList(state.playList, action.payload)
+      }
+    case musicActionTypes.TOGGLE_PLAYLIST:
+      return {
+        ...state,
+        togglePlaylist: true
       }
     default:
       return state;

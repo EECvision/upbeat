@@ -21,3 +21,8 @@ export const selectIsFetching = createSelector(
     [selectMusic],
     music => music.isFetching
 )
+
+export const selectTogglePlaylist = createSelector(
+    [selectMusic],
+    music => music.togglePlaylist
+)

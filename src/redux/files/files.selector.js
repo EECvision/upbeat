@@ -21,3 +21,18 @@ export const selectIsUploading = createSelector(
     [selectFile],
     file => file.isUploading
 )
+
+export const selectIsDeleting = createSelector(
+    [selectFile],
+    file => file.isDeleting
+)
+
+export const selectError = createSelector(
+    [selectFile],
+    file => file.error
+)
+
+export const selectSuccess = createSelector(
+    [selectFile],
+    file => file.success
+)

@@ -17,7 +17,7 @@ export const convertFilesToMap = (filesSnapshot) => {
         snapshots.map(snapshot => {
           if (snapshot.metadata.contentType.includes('image')) {
             file.imageUrl = snapshot.url
-            file.imageData = snapshot.metadata
+            file.imageMetadata = snapshot.metadata
           } else {
             file.fileUrl = snapshot.url
             file.fileMetadata = snapshot.metadata

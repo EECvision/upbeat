@@ -5,23 +5,29 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import {
   selectFileList,
-  selectCategory
+  selectCategory,
+  selectError
 } from '../../redux/files/files.selector';
 
-const FileListMenu = ({ fileList, category }) => {
+const FileListMenu = ({ fileList, category, error }) => {
   return (
-    <div className="">
+    <div className="w-full">
+      {
+        !!error 
+        ? <div> unable to delete please try again</div>
+        : null
+      }
       {
         fileList
           .filter(file => file.fileMetadata.customMetadata.category === category)
           .map((fileItem, idx) => (
             category === 'video'
               ?
-              <div key={idx} className="">
+              <div key={idx} className="w-full">
                 <VideoList fileItem={fileItem} />
               </div>
               :
-              <div key={idx} className="">
+              <div key={idx} className="w-full">
                 <AudioList fileItem={fileItem} />
               </div>
           ))
@@ -31,7 +37,8 @@ const FileListMenu = ({ fileList, category }) => {
 }
 const mapStateToProps = createStructuredSelector({
   fileList: selectFileList,
-  category: selectCategory
+  category: selectCategory,
+  error: selectError
 })
 
 export default connect(mapStateToProps)(FileListMenu);

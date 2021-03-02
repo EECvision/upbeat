@@ -7,7 +7,10 @@ import Contact from './pages/Contact';
 import UserSignIn from "./pages/UserSignIn";
 import Admin from './pages/Admin';
 import UploadForm from './components/admin/UploadForm';
-import { auth } from './firebase/firebase.utils';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from './redux/user/user.selector';
+
 
 const NotFound = ()=>(
   <div className="flex flex-col justify-start">
@@ -15,7 +18,9 @@ const NotFound = ()=>(
     <div className="text-purple-800 text-2xl">Looks like you are on a page that does not exist</div>
   </div>
 )
-function App() {
+
+function App({currentUser}) {
+
   return (
     <div className="App">
       <Switch>
@@ -23,8 +28,8 @@ function App() {
         <Route path='/your-music' component={Main}/>
         <Route exact path='/about' component={About}/>
         <Route exact path='/contact' component={Contact}/>
-        <Route path='/account/login' render={ props => !auth.currentUser ? <UserSignIn {...props}/> : <Redirect to='/admin'/>}/>
-        <Route exact path='/admin' render={ props => !auth.currentUser ? <Redirect to='/account/login'/> : <Admin {...props}/>} />
+        <Route path='/account/login' render={ props => !currentUser ? <UserSignIn {...props}/> : <Redirect to='/admin'/>}/>
+        <Route exact path='/admin' render={ props => false ? <Redirect to='/account/login'/> : <Admin {...props}/>} />
         <Route path='/admin/upload/:id' component={UploadForm} />
         <Route component={NotFound}/>
       </Switch>
@@ -32,7 +37,11 @@ function App() {
   );
 }
 
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+})
 
-export default App;
+
+export default connect(mapStateToProps)(App);
 
 

@@ -23,3 +23,8 @@ export const setSearchEntry = value => ({
     type: musicActionTypes.SET_SEARCH_ENTRY,
     payload: value
 })
+
+export const togglePlaylist = () => ({
+    type: musicActionTypes.TOGGLE_PLAYLIST
+})
+

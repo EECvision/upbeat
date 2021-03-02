@@ -5,17 +5,18 @@ import { auth } from '../../firebase/firebase.utils';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import {
-  selectCategory
+  selectCategory,
+  selectError
 } from '../../redux/files/files.selector';
 
 import {
   setCategory,
 } from '../../redux/files/files.actions';
 
-const AdminDashboard = ({  setCategory, category, history, match }) => {
+const AdminDashboard = ({  setCategory, category, history, match, error }) => {
 
   return (
-    <div className={`w-full max-w-4xl shadow-2xl`}>
+    <div className={`overflow-scroll border border-black w-full h-screen max-w-4xl shadow-2xl`}>
       <div className="w-full px-6 flex flex-wrap items-center justify-evenly sm:justify-between py-6 text-lg border-b border-black">
         <div onClick={() => history.push('/')} className="px-6 cursor-pointer border border-black">Nuf9ja</div>
         <div onClick={() => auth.signOut().then(()=>history.push('/'))} className="px-6 border border-black cursor-pointer">Logout</div>
@@ -36,6 +37,11 @@ const AdminDashboard = ({  setCategory, category, history, match }) => {
       </div>
       <div className="w-full px-4 md:px-12">
         <Category category={category} changeHandler={val => setCategory(val)} />
+        {
+          error ?
+            <div className="w-full mt-6 text-red-600 font-medium shadow-lg p-6">!! {error}</div>
+          : null
+        }
         <div className="w-full py-6 mt-12">
         <FileListContainer/>
         </div>
@@ -45,7 +51,8 @@ const AdminDashboard = ({  setCategory, category, history, match }) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-  category: selectCategory
+  category: selectCategory,
+  error: selectError
 })
 
 const mapDispatchToProps = dispatch => ({

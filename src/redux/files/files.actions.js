@@ -43,3 +43,13 @@ export const fileUploading = val => ({
     type: filesActionTypes.FILE_UPLOADING,
     payload: val
 })
+
+export const uploadFileError = val => ({
+    type: filesActionTypes.UPLOAD_FILE_ERROR,
+    payload: val
+})
+
+export const uploadFileSuccess = val => ({
+    type: filesActionTypes.UPLOAD_FILE_SUCCESS,
+    payload: val
+})
