@@ -6,7 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import {
   selectMusicList,
   selectSearchEntry,
-  selectTogglePlaylist
+  selectTogglePlaylist,
 } from '../../../redux/music/music.selectors';
 
 import 'react-jinke-music-player/assets/index.css'
@@ -14,11 +14,11 @@ import 'react-jinke-music-player/assets/index.css'
 
 const Audio = ({ musicList, category, searchEntry, togglePlaylist }) => {
   const [playList, setPlayList] = useState([]);
+  const regex = new RegExp(searchEntry.toLowerCase());
 
   const musicCategory = musicList
     .filter(file => file.fileMetadata.customMetadata.category === category)
-    .filter(file => file.fileMetadata.name.toLowerCase().includes(searchEntry.toLowerCase()));
-
+    .filter(file => regex.test(file.fileMetadata.name.toLowerCase()))
 
   return (
     <div className="relative w-full flex items-center justify-end">
@@ -32,6 +32,7 @@ const Audio = ({ musicList, category, searchEntry, togglePlaylist }) => {
             mode="full"
             showMediaSession
             glassBg={true}
+            theme="light"
           />
           : null
       }
@@ -39,7 +40,9 @@ const Audio = ({ musicList, category, searchEntry, togglePlaylist }) => {
         {
           musicCategory.length === 0
             ?
-            <div className="w-full px-32 py-32 flex items-center justify-center">Nothing to display</div>
+            <div className="w-full flex items-center justify-center ">
+              <div className="w-auto rounded-2xl text-purple-500 shadow-lg text-lg px-6">No item found</div>
+            </div>
             :
             <AudioContainer
               musicCategory={musicCategory}

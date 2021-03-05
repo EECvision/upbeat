@@ -1,20 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const NavLinks = ({children, link}) => (
-    <li className="w-20 text-sm text-center md:text-base py-1 rounded-lg border border-purple-800 hover:bg-gray-300 mb-2"><NavLink to={link}>{children}</NavLink></li>
-)
 const Navigation = () => {
-    return (
-        <nav className="w-full max-w-lg mt-8">
-            <ul className="w-full flex flex-wrap justify-evenly items-center">
-                <NavLinks link="/your-music/audio">Audio</NavLinks>
-                <NavLinks link="#">Video</NavLinks>
-                <NavLinks link="/your-music/gospel">Gospel</NavLinks>
-                <NavLinks link="/your-music/highlife">Highlife</NavLinks>
-            </ul>
-        </nav>
-    )
+  const [activeLink, setActiveLink] = useState({ audio: true , video: false , gospel: false , highlife: false })
+
+  useEffect(()=>{
+    let link = window.sessionStorage.getItem("link");
+    link = JSON.parse(link);
+    if(!link) return
+    setActiveLink(link)
+  },[])
+
+  const NavLinks = ({ children, link, clickHandler, k }) => (
+    <li onClick={()=>clickHandler()} className={`w-auto text-sm text-center md:text-lg pb-2  border-b-4 border-purple-600 ${activeLink[k] ? 'border-pink-600' : ''}  mb-2`}>
+      <NavLink to={link}>{children}</NavLink>
+    </li>
+  )
+
+  const handleClick = (val) => {
+    const { ...newLink } = activeLink
+    for( const key in newLink){
+      if(key === val){
+        newLink[key]=true
+      }else{
+        newLink[key]=false
+      }
+    }
+    window.sessionStorage.setItem("link",JSON.stringify(newLink))
+    setActiveLink(newLink);
+  }
+
+  return (
+    <nav className="w-full max-w-lg mt-8">
+      <ul className="w-full flex flex-wrap justify-evenly items-center">
+        <NavLinks clickHandler={() => handleClick('audio')} k="audio" link="/your-music/audio">Audio</NavLinks>
+        <NavLinks clickHandler={() => handleClick('video')} k="video" link="/your-music/video">Video</NavLinks>
+        <NavLinks clickHandler={() => handleClick('gospel')} k="gospel" link="/your-music/gospel">Gospel</NavLinks>
+        <NavLinks clickHandler={() => handleClick('highlife')} k="highlife" link="/your-music/highlife">Highlife</NavLinks>
+      </ul>
+    </nav>
+  )
 }
+
 
 export default Navigation;

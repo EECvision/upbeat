@@ -1,44 +1,47 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { setSearchEntry } from '../../../redux/music/music.actions';
-import { withRouter } from 'react-router-dom';
 
-const Form = ({ setSearchEntry, history, match }) => {
-    const [searchEntry, updateEntry] = useState("");
+class Form extends React.Component {
 
-    const updateSearchInput = e => {
-        updateEntry(e.target.value);
+    state = {
+        searchEntry: ''
     }
-    return (
-        <form
-            className="relative w-full max-w-md flex items-center justify-end rounded-l bg-purple-600 h-10 py-1 mt-8"
-            onSubmit={ (e) => {
-                e.preventDefault()
-                setSearchEntry(searchEntry)
-                updateEntry('')
-            }}
-        >
-            <input 
-                type='text'
-                name='search'
-                placeholder='search your favorite artist...'
-                onChange={updateSearchInput}
-                value={searchEntry}
-                className={`w-11/12 text-lg focus:outline-none px-2 h-full ml-1`}
-            />
-            <button
-                type='submit'
-                className={`w-1/12 h-full focus: text-gray-200 flex items-center justify-center border border-white mr-1`}
+    updateSearchInput = e => {
+        this.setState({searchEntry:e.target.value},()=>{
+        this.props.setSearchEntry(this.state.searchEntry)
+        })
+        
+    }
+    render() {
+        
+        return (
+            <form
+            onSubmit={(e)=>e.preventDefault()}
+                className="relative w-full max-w-md flex items-center justify-end bg-white border-2 border-purple-500 h-10 mt-8 overflow-hidden"
             >
-                <i className="w-4 fas fa-search"></i>
-            </button> 
-        </form>
-            
-    )
+                <input
+                    type='text'
+                    name='search'
+                    placeholder='search your favorite song or artist...'
+                    onChange={this.updateSearchInput}
+                    value={this.state.searchEntry}
+                    className="w-11/12 text-lg focus:outline-none border-2 border-white focus:bg-gray-200 px-2 h-full"
+                />
+                <div
+                    className={`w-1/12 h-full flex items-center justify-center mx-1 bg-white`}
+                >
+                    <i className="text-purple-600 text-2xl fas fa-search"></i>
+                </div>
+            </form>
+
+        )
+
+    }
 }
 
 const mapDispatchToProps = dispatch => ({
     setSearchEntry: value => dispatch(setSearchEntry(value))
 })
 
-export default withRouter(connect(null, mapDispatchToProps)(Form));
+export default connect(null, mapDispatchToProps)(Form);

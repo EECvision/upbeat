@@ -19,8 +19,7 @@ const Footer = ({history}) => {
         <div style={{ height: '16rem' }} className="w-full sm:max-w-md md:max-w-5xl flex flex-col md:flex-row items-start justify-between text-gray-400 text-sm md:text-xl">
           <div className="w-full flex flex-col items-start">
             <div className="py-2 cursor-pointer">HOME</div>
-            <div className="py-2 cursor-pointer">ABOUT</div>
-            <div className="py-2 cursor-pointer">LOGIN</div>
+            <div className="py-2 cursor-pointer">CONTACT US</div>
           </div>
           <div className="w-full flex flex-col items-center mb-12">
             <div className="w-full text-center mb-8">FOLLOW US ON</div>
@@ -37,7 +36,7 @@ const Footer = ({history}) => {
         </div>
       </div>
       <div className="w-full flex justify-center py-4 px-4 md:px-0">
-        <div className="w-full max-w-4xl flex flex-wrap justify-center md:justify-start items-center bg-gray-100 text-gray-500">
+        <div className="w-full max-w-5xl flex flex-wrap justify-center md:justify-start items-center bg-gray-100 text-gray-500">
           <div style={{ fontFamily: 'sans-serif' }} className="text-gray-600 text-xl font-medium cursor-pointer mr-12">Nuf9ja</div>
           <div> All rights Reserved</div>
         </div>

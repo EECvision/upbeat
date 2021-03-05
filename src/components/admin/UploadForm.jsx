@@ -141,7 +141,7 @@ const UploadForm = ({ isUploading, setCategory, category, match, history, error,
         }
         {
           error ?
-            <div className="w-full mb-6 text-red-600 font-medium shadow-lg p-6">!! {error}</div>
+            <div className="w-full mb-6 text-red-600 font-medium shadow-lg p-6">! {error}</div>
           : null
         }
         <div className="w-full">

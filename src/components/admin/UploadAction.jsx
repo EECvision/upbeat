@@ -24,7 +24,7 @@ const UploadTab = ({ uploadFile, fileUploading, fileList, musicUrl, imageUrl, ca
     const isExisting = files.find(f =>
       f.fileMetadata.name === music.url.name
     )
-    if (isExisting) return setError('audio file already exist');
+    if (isExisting) return setError(`${category === "video" ? "video" : "audio"} already exist`);
 
     getUrl(music.url.name, music, image)
 

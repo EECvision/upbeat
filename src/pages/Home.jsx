@@ -10,6 +10,13 @@ import { fetchMusicStart } from '../redux/music/music.actions';
 function Home({ fetchMusic }){
 
     useEffect(()=>{
+        window.sessionStorage.setItem("link",
+        JSON.stringify({ 
+            audio: true , 
+            video: false , 
+            gospel: false , 
+            highlife: false 
+        }))
         fetchMusic()
     },[fetchMusic])
 
