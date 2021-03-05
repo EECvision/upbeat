@@ -24,8 +24,9 @@ export const addToPlaylist = file => ({
     payload: file
 })
 
-export const togglePlaylist = () => ({
-    type: musicActionTypes.TOGGLE_PLAYLIST
+export const togglePlaylist = state => ({
+    type: musicActionTypes.TOGGLE_PLAYLIST,
+    payload: state
 })
 
 export const updatePlaylist = newlist => ({

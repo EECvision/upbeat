@@ -19,7 +19,7 @@ const AudioItem = ({ fileUrl, fileMetadata, imageUrl, addToPlaylist, togglePlayl
       musicSrc: fileUrl,
       singer: fileMetadata.customMetadata.artistName
     })
-    togglePlaylist()
+    togglePlaylist(true)
   }
   return (
     <div className="w-full mb-8 text-sm md:text-base">
@@ -85,7 +85,7 @@ const AudioItem = ({ fileUrl, fileMetadata, imageUrl, addToPlaylist, togglePlayl
 }
 
 const mapDispatchToProps = dispatch => ({
-  togglePlaylist: () => dispatch(togglePlaylist()),
+  togglePlaylist: state => dispatch(togglePlaylist(state)),
   addToPlaylist: file => dispatch(addToPlaylist(file))
 })
 

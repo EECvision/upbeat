@@ -51,7 +51,7 @@ const musicReducer = (state = INITIAL_STATE, action) => {
     case musicActionTypes.TOGGLE_PLAYLIST:
       return {
         ...state,
-        togglePlaylist: true
+        togglePlaylist: action.payload
       }
     case musicActionTypes.IS_ADDING_TO_PLAYLIST:
       return{
