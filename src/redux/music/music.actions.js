@@ -14,17 +14,29 @@ export const fetchMusicFailure = error => ({
     payload: error
 })
 
-export const addToPlayList = item => ({
-    type: musicActionTypes.ADD_TO_PLAYLIST,
-    payload: item
-})
-
 export const setSearchEntry = value => ({
     type: musicActionTypes.SET_SEARCH_ENTRY,
     payload: value
 })
 
+export const addToPlaylist = file => ({
+    type: musicActionTypes.ADD_TO_PLAYLIST,
+    payload: file
+})
+
 export const togglePlaylist = () => ({
     type: musicActionTypes.TOGGLE_PLAYLIST
 })
+
+export const updatePlaylist = newlist => ({
+    type: musicActionTypes.UPDATE_PLAYLIST,
+    payload: newlist
+})
+
+export const setIsAddingToPlaylist =()=>({
+    type: musicActionTypes.IS_ADDING_TO_PLAYLIST
+})
+
+
+
 

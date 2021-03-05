@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactJkMusicPlayer from 'react-jinke-music-player'
 import AudioContainer from './Audio-container';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { 
+  updatePlaylist, 
+  setIsAddingToPlaylist 
+} from '../../../redux/music/music.actions';
 import {
   selectMusicList,
   selectSearchEntry,
   selectTogglePlaylist,
+  selectPlaylist,
+  selectIsAddingToPlaylist
 } from '../../../redux/music/music.selectors';
 
 import 'react-jinke-music-player/assets/index.css'
 
 
-const Audio = ({ musicList, category, searchEntry, togglePlaylist }) => {
-  const [playList, setPlayList] = useState([]);
+const Audio = ({ musicList, category, 
+                searchEntry, togglePlaylist, 
+                playlist, updatePlaylist, 
+                setIsAddingToPlaylist,
+                isAddingToPlaylist
+              }) => {
   const regex = new RegExp(searchEntry.toLowerCase());
 
   const musicCategory = musicList
@@ -26,13 +36,20 @@ const Audio = ({ musicList, category, searchEntry, togglePlaylist }) => {
         togglePlaylist ?
 
           <ReactJkMusicPlayer
-            audioLists={playList}
+            audioLists={playlist}
             defaultPosition={{ top: 0, right: 0 }}
             remember={true}
             mode="full"
             showMediaSession
             glassBg={true}
-            theme="light"
+            theme="dark"
+            autoHiddenCover={true}
+            onAudioListsChange={(a, newlist, c)=>{
+              if(!isAddingToPlaylist){
+                updatePlaylist(newlist) 
+              }
+              setIsAddingToPlaylist()
+            }}
           />
           : null
       }
@@ -46,7 +63,6 @@ const Audio = ({ musicList, category, searchEntry, togglePlaylist }) => {
             :
             <AudioContainer
               musicCategory={musicCategory}
-              addToPlayList={(item => setPlayList([...playList, item]))}
             />
         }
       </div>
@@ -57,7 +73,13 @@ const Audio = ({ musicList, category, searchEntry, togglePlaylist }) => {
 const mapStateToProps = createStructuredSelector({
   musicList: selectMusicList,
   searchEntry: selectSearchEntry,
-  togglePlaylist: selectTogglePlaylist
+  togglePlaylist: selectTogglePlaylist,
+  playlist: selectPlaylist,
+  isAddingToPlaylist: selectIsAddingToPlaylist
 })
 
-export default connect(mapStateToProps)(Audio);
+const mapDispatchToProps = dispatch =>({
+  updatePlaylist: newlist => dispatch(updatePlaylist(newlist)),
+  setIsAddingToPlaylist: ()=> dispatch(setIsAddingToPlaylist())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Audio);

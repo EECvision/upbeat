@@ -34,9 +34,9 @@ const Navigation = () => {
     <nav className="w-full max-w-lg mt-8">
       <ul className="w-full flex flex-wrap justify-evenly items-center">
         <NavLinks clickHandler={() => handleClick('audio')} k="audio" link="/your-music/audio">Audio</NavLinks>
-        <NavLinks clickHandler={() => handleClick('video')} k="video" link="/your-music/video">Video</NavLinks>
         <NavLinks clickHandler={() => handleClick('gospel')} k="gospel" link="/your-music/gospel">Gospel</NavLinks>
         <NavLinks clickHandler={() => handleClick('highlife')} k="highlife" link="/your-music/highlife">Highlife</NavLinks>
+        <NavLinks clickHandler={() => handleClick('video')} k="video" link="/your-music/video">Video</NavLinks>
       </ul>
     </nav>
   )

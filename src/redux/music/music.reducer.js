@@ -1,12 +1,13 @@
 import musicActionTypes from './music.types';
 import { addFileToPlayList } from './music.utils';
-
 const INITIAL_STATE = {
   musicList: [],
+  playlist: [],
   searchEntry: '',
   isFetching: false,
   togglePlaylist: false,
-  error: null
+  error: null,
+  isAddingToPlaylist: false
 }
 
 
@@ -39,12 +40,23 @@ const musicReducer = (state = INITIAL_STATE, action) => {
     case musicActionTypes.ADD_TO_PLAYLIST:
       return {
         ...state,
-        audioList: addFileToPlayList(state.playList, action.payload)
+        playlist: addFileToPlayList(state.playlist,action.payload),
+        isAddingToPlaylist: true
+      }
+    case musicActionTypes.UPDATE_PLAYLIST:
+      return {
+        ...state,
+        playlist: action.payload
       }
     case musicActionTypes.TOGGLE_PLAYLIST:
       return {
         ...state,
         togglePlaylist: true
+      }
+    case musicActionTypes.IS_ADDING_TO_PLAYLIST:
+      return{
+        ...state,
+        isAddingToPlaylist: false
       }
     default:
       return state;

@@ -16,11 +16,11 @@ export const convertFilesToMap = (filesSnapshot) => {
     return newFile
 }
 
-export const addFileToPlayList=(playList, fileToAdd)=>{
-    const isExisting = playList.find(
+export const addFileToPlayList=(playlist, fileToAdd)=>{
+    const isExisting = playlist.find(
         file => file.name === fileToAdd.name
     );
 
-    if(isExisting) return playList
-    return [...playList, fileToAdd]
+    if(isExisting) return playlist
+    return [...playlist,{...fileToAdd}]
 }

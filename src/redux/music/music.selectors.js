@@ -7,11 +7,6 @@ export const selectMusicList = createSelector(
     music => music.musicList
 );
 
-export const selectAudioList = createSelector(
-    [selectMusic],
-    music => music.audioList
-)
-
 export const selectSearchEntry = createSelector(
     [selectMusic],
     music => music.searchEntry
@@ -22,7 +17,17 @@ export const selectIsFetching = createSelector(
     music => music.isFetching
 )
 
+export const selectPlaylist = createSelector(
+    [selectMusic],
+    music => music.playlist
+)
+
 export const selectTogglePlaylist = createSelector(
     [selectMusic],
     music => music.togglePlaylist
+)
+
+export const selectIsAddingToPlaylist = createSelector(
+    [selectMusic],
+    music => music.isAddingToPlaylist
 )
