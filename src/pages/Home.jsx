@@ -17,7 +17,10 @@ function Home({ fetchMusic }){
             gospel: false , 
             highlife: false 
         }))
-        fetchMusic()
+        if(window.sessionStorage.reload === undefined){
+            fetchMusic()
+        }
+        window.sessionStorage.reload = "false"
     },[fetchMusic])
 
     return(
