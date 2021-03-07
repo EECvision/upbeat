@@ -46,7 +46,6 @@ const Header = ({ history }) => {
           </div>
         </div>
         <div className={`${dropdown && windowWidth < 768 ? 'h-64 ' : 'h-0'} w-full overflow-hidden fixed z-10 transition-all duration-500 delay-300 ease-in-out flex flex-col items-center bg-gray-100`}>
-          {/* <NavButtonDropdown clickHandler={() => { history.push('#') }}>ABOUT</NavButtonDropdown> */}
           <NavButtonDropdown clickHandler={() => { history.push('/your-music') }}>GET STARTED</NavButtonDropdown>
           <NavButtonDropdown clickHandler={() => { history.push('#') }} >PUBLISH</NavButtonDropdown>
         </div>

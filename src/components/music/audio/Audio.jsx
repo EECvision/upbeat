@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactJkMusicPlayer from 'react-jinke-music-player'
 import AudioContainer from './Audio-container';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { 
-  updatePlaylist, 
-  setIsAddingToPlaylist 
+import {
+  updatePlaylist,
+  setIsAddingToPlaylist,
+  togglePlaylist,
 } from '../../../redux/music/music.actions';
 import {
   selectMusicList,
@@ -18,12 +19,13 @@ import {
 import 'react-jinke-music-player/assets/index.css'
 
 
-const Audio = ({ musicList, category, 
-                searchEntry, togglePlaylist, 
-                playlist, updatePlaylist, 
-                setIsAddingToPlaylist,
-                isAddingToPlaylist
-              }) => {
+const Audio = ({
+  musicList, category, searchEntry, togglePlaylist,
+  playlist, updatePlaylist, setIsAddingToPlaylist,
+  isAddingToPlaylist, setTogglePlaylist
+}) => {
+  const [isPlaylist, setisPlaylist] = useState(true);
+
   const regex = new RegExp(searchEntry.toLowerCase());
 
   const musicCategory = musicList
@@ -44,9 +46,9 @@ const Audio = ({ musicList, category,
             glassBg={true}
             theme="dark"
             autoHiddenCover={true}
-            onAudioListsChange={(a, newlist, c)=>{
-              if(!isAddingToPlaylist){
-                updatePlaylist(newlist) 
+            onAudioListsChange={(a, newlist, c) => {
+              if (!isAddingToPlaylist) {
+                updatePlaylist(newlist)
               }
               setIsAddingToPlaylist()
             }}
@@ -66,6 +68,14 @@ const Audio = ({ musicList, category,
             />
         }
       </div>
+      {
+        isPlaylist ?
+          <div onClick={() => { setTogglePlaylist(true); setisPlaylist(false) }}
+            className="fixed z-10 right-0 -top-0 w-12 h-12 mt-4 flex items-center justify-center cursor-pointer rounded-full bg-gray-200">
+            <i className="animate-bounce text-green-700 font-bold fa fa-headphones" aria-hidden="true"></i>
+          </div>
+          : null
+      }
     </div>
   )
 }
@@ -78,8 +88,9 @@ const mapStateToProps = createStructuredSelector({
   isAddingToPlaylist: selectIsAddingToPlaylist
 })
 
-const mapDispatchToProps = dispatch =>({
+const mapDispatchToProps = dispatch => ({
   updatePlaylist: newlist => dispatch(updatePlaylist(newlist)),
-  setIsAddingToPlaylist: ()=> dispatch(setIsAddingToPlaylist())
+  setIsAddingToPlaylist: () => dispatch(setIsAddingToPlaylist()),
+  setTogglePlaylist: state => dispatch(togglePlaylist(state))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Audio);

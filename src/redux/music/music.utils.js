@@ -17,7 +17,7 @@ export const convertFilesToMap = (filesSnapshot) => {
 }
 
 export const addFileToPlayList=(playlist, fileToAdd)=>{
-  if (!playlist.length)return [...playlist,{...fileToAdd}]
+  if (!playlist)return playlist=[{...fileToAdd}]
     const isExisting = playlist.find(
         file => file.name === fileToAdd.name
     );
