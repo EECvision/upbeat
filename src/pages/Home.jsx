@@ -17,7 +17,7 @@ function Home({ fetchMusic, togglePlaylist }){
             gospel: false , 
             highlife: false 
         }))
-        if(window.sessionStorage.reload === undefined){
+        if(!window.sessionStorage.reload === "false"){
             fetchMusic()
         }
         window.sessionStorage.reload = "false";

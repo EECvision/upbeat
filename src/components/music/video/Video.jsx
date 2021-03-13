@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import VideoContainer from './Video-container';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -6,9 +6,14 @@ import {
     selectMusicList,
     selectSearchEntry,
 } from '../../../redux/music/music.selectors';
+import { togglePlaylist } from '../../../redux/music/music.actions';
 
 
-const Video = ({ musicList, searchEntry }) => {
+const Video = ({ musicList, searchEntry, togglePlaylist }) => {
+    useEffect(()=>{
+        togglePlaylist(false)
+    },[togglePlaylist])
+
     const regex = new RegExp(searchEntry.toLowerCase());
     const musicCategory = musicList
         .filter(file => file.fileMetadata.customMetadata.category === 'video')
@@ -36,4 +41,8 @@ const mapStateToProps = createStructuredSelector({
     searchEntry: selectSearchEntry,
 })
 
-export default connect(mapStateToProps)(Video);
+const mapDispatchToProps = dispatch => ({
+    togglePlaylist: state => dispatch(togglePlaylist(state))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Video);
