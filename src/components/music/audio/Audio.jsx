@@ -13,7 +13,8 @@ import {
   selectSearchEntry,
   selectTogglePlaylist,
   selectPlaylist,
-  selectIsAddingToPlaylist
+  selectIsAddingToPlaylist,
+  selectIsFetching
 } from '../../../redux/music/music.selectors';
 
 import 'react-jinke-music-player/assets/index.css'
@@ -22,7 +23,7 @@ import 'react-jinke-music-player/assets/index.css'
 const Audio = ({
   musicList, category, searchEntry, togglePlaylist,
   playlist, updatePlaylist, setIsAddingToPlaylist,
-  isAddingToPlaylist, setTogglePlaylist
+  isAddingToPlaylist, setTogglePlaylist, isFetching
 }) => {
   const [isPlaylist, setisPlaylist] = useState(true);
 
@@ -57,7 +58,7 @@ const Audio = ({
       }
       <div className="w-full">
         {
-          musicCategory.length === 0
+          musicCategory.length === 0 && isFetching === false
             ?
             <div className="w-full flex items-center justify-center ">
               <div className="w-auto rounded-2xl text-purple-500 shadow-lg text-lg px-6">No item found</div>
@@ -85,7 +86,8 @@ const mapStateToProps = createStructuredSelector({
   searchEntry: selectSearchEntry,
   togglePlaylist: selectTogglePlaylist,
   playlist: selectPlaylist,
-  isAddingToPlaylist: selectIsAddingToPlaylist
+  isAddingToPlaylist: selectIsAddingToPlaylist,
+  isFetching: selectIsFetching
 })
 
 const mapDispatchToProps = dispatch => ({
