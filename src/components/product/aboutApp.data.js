@@ -1,20 +1,24 @@
 export const DATA = [
     {
         id: 1,
-        text: 'used and loved by so many people',
-        img: 'love',
-        reverse: false
+        title: "Quality sound",
+        content: "Get rich songs that matches your mood",
+        img: 'a',
+        color: 'purple'
     },
     {
         id: 2,
-        text: 'All music are downloaded for free',
-        img: 'download',
-        reverse: true
+        title: "Free Downloads",
+        content: "All songs are played and downloaded without asking for your credit cards",
+        img: 'b',
+        color: 'pink',
+        negative: true
     }, 
     {
         id: 3,
-        text: 'Play music with a favorite player in browser',
-        img: 'offline',
-        reverse: false
+        title: "In Browser Playlist",
+        content: "You can add all your favorite songs in an in browser playlist and enjoy them anytime from your device",
+        img: 'c',
+        color: 'purple'
     }
 ]

@@ -24,12 +24,16 @@ const AudioItem = ({ fileUrl, fileMetadata, imageUrl, addToPlaylist, togglePlayl
   return (
     <div className="w-full mb-8 text-sm md:text-base">
       <React.Fragment>
-        <div className="w-full flex flex-col lg:flex-row items-center sm:items-start lg:items-center justify-between py-2 px-4 md:border-l-4 border md:border-gray-500 md:rounded-l-lg shadow-xl">
+        <div className="w-full flex flex-col lg:flex-row items-center sm:items-start lg:items-center justify-between py-2 px-4 md:border-l-4 border md:border-purple-700 md:rounded-l-lg shadow-xl">
           <div className="w-full lg:max-w-xl flex items-center justify-center">
-            <img className="w-12 h-12 md:w-16 md:h-16 lg:w-24 lg:h-24 rounded-full" src={imageUrl} alt="poster" />
-            <div className="ml-4 h-24 w-full flex flex-col items-center justify-evenly">
+            <div className="w-3/12 flex items-center jusitfy-center">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24  rounded-full overflow-hidden">
+                <img className="w-full h-full" src={imageUrl} alt="poster" />
+              </div>
+            </div>
+            <div className="ml-4 h-24 w-9/12 lg:max-w-md flex flex-col items-center justify-evenly">
               <div className="w-full flex items-center justify-between">
-                <div className="cursor-default text-gray-700 text-base w-40 truncate sm:w-auto"> {fileMetadata.name} </div>
+                <div className="cursor-default text-gray-700 text-base w-40 truncate sm:w-64"> {fileMetadata.name} </div>
                 <div className="w-24 ml-2 flex items-center justify-center ">
                   {`${(fileMetadata.size / 1049367).toFixed(2)} mb`}
                 </div>
