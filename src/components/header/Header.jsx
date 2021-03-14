@@ -26,9 +26,9 @@ const Header = ({ history }) => {
 
   return (
     <div className="w-full">
-      <div className="w-full bg-white py-10"></div>
+      <div className="w-full bg-white py-8"></div>
       <div className="w-full relative flex flex-col items-center">
-        <div className="w-full flex justify-center bg-white z-10 px-12 md:px-0 shadow fixed top-0">
+        <div className="w-full flex justify-center bg-white z-10 px-4 md:px-0 shadow fixed top-0">
           <div style={{ fontFamily: 'sans-serif' }} className="w-full max-w-5xl flex justify-between items-center">
             <Link to="/" className="text-gray-600 text-xl font-medium py-6 cursor-pointer">Nuf9ja</Link>
             <div className="hidden md:flex justify-center items-center">

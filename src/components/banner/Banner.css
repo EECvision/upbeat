@@ -1,17 +1,11 @@
   
-  .animated-section {
-    opacity: 0.8;
-    border-bottom-left-radius: 150px;
-    border-bottom-right-radius: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 36rem;
-  }
-  
-  .animated-images {
-    background-size: cover;
-    background-position: center;
+  .height{
+    height: 30rem;
   }
 
   /* -webkit-clip-path: polygon(0 0, 0 20%, 20% 30%, 20% 70%, 0 80%, 0 100%, 100% 100%, 100% 0); */
+@media screen and (max-width: 768px){
+  .height{
+    height: 24rem;
+  }
+}

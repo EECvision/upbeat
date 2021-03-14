@@ -6,8 +6,7 @@ const ProductDescription = () => {
   const [data,] = useState(DATA)
 
   return (
-    <div 
-      className="w-full flex flex-col items-center justify-center bg-gray-100 pb-12">
+    <div className="w-full flex flex-col items-center justify-center bg-gray-100 pb-12 px-4 md:px-0">
       <div className="w-full max-w-xl flex flex-col items-center justify-center mb-10 py-10">
         <div className="font-bold text-gray-700 text-center flex flex-col items-center justfy-center mb-12">
           <div className="w-full text-center text-4xl mb-4 font-serif">For Artists and for Listeners</div>
@@ -17,7 +16,7 @@ const ProductDescription = () => {
            who are pationate about inspiring the mind through their songs
             and We make their efforts availble to all listeners without cost
           </div>
-        <div className="text-center">  --Whatever music does to the soul is what needs to be done to the soul--</div>
+        <div className="text-center text-xs">  --Whatever music does to the soul is what needs to be done to the soul--</div>
         
       </div>
       <div className="w-full flex flex-col md:flex-row items-center justify-evenly max-w-6xl">
