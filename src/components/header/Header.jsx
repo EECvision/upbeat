@@ -35,7 +35,7 @@ const Header = ({ history }) => {
               <NavButton clickHandler={() => { history.push('/your-music') }}>GET STARTED</NavButton>
               <Link to="#" className="text-pink-500 text-base font-medium py-2 px-8 cursor-pointer border-2 border-pink-500 rounded transition duration-200 ease-in-out transform hover:scale-95">PUBLISH</Link>
             </div>
-            <div className="flex md:hidden cursor-pointer">
+            <div className="flex md:hidden cursor-pointer font-light">
               {
                 dropdown ?
                   <img onClick={() => toggleDropdown(false)} src={iconClose} alt="icon" />

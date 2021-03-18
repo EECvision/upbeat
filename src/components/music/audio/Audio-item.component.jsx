@@ -24,7 +24,7 @@ const AudioItem = ({ fileUrl, fileMetadata, imageUrl, addToPlaylist, togglePlayl
   return (
     <div className="w-full mb-8 text-sm md:text-base">
       <React.Fragment>
-        <div className="w-full flex flex-col lg:flex-row items-center sm:items-start lg:items-center justify-between py-2 px-4 md:border-l-4 border md:border-purple-700 md:rounded-l-lg shadow-xl">
+        <div className="w-full flex flex-col lg:flex-row items-center sm:items-start lg:items-center justify-between py-2 px-4 md:border-2 border md:border-gray-300 shadow md:shadow-none">
           <div className="w-full lg:max-w-xl flex items-center justify-center">
             <div className="w-3/12 flex items-center jusitfy-center">
               <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24  rounded-full overflow-hidden">
