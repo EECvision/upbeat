@@ -25,7 +25,7 @@ function App({currentUser}) {
     <div className="App">
       <Switch>
         <Route exact path='/' component={Home}/>
-        <Route path='/your-music' component={Main}/>
+        <Route path='/my-music' component={Main}/>
         <Route exact path='/about' component={About}/>
         <Route exact path='/contact' component={Contact}/>
         <Route path='/account/login' render={ props => !currentUser ? <UserSignIn {...props}/> : <Redirect to='/admin'/>}/>

@@ -32,7 +32,7 @@ const Header = ({ history }) => {
           <div style={{ fontFamily: 'sans-serif' }} className="w-full max-w-5xl flex justify-between items-center">
             <Link to="/" className="text-gray-600 text-xl font-medium py-6 cursor-pointer">Nuf9ja</Link>
             <div className="hidden md:flex justify-center items-center">
-              <NavButton clickHandler={() => { history.push('/your-music') }}>GET STARTED</NavButton>
+              <NavButton clickHandler={() => { history.push('/my-music') }}>GET STARTED</NavButton>
               <Link to="#" className="text-pink-500 text-base font-medium py-2 px-8 cursor-pointer border-2 border-pink-500 rounded transition duration-200 ease-in-out transform hover:scale-95">PUBLISH</Link>
             </div>
             <div className="flex md:hidden cursor-pointer font-light">
@@ -46,7 +46,7 @@ const Header = ({ history }) => {
           </div>
         </div>
         <div className={`${dropdown && windowWidth < 768 ? 'h-64 ' : 'h-0'} w-full overflow-hidden fixed z-10 transition-all duration-500 delay-300 ease-in-out flex flex-col items-center bg-gray-100`}>
-          <NavButtonDropdown clickHandler={() => { history.push('/your-music') }}>GET STARTED</NavButtonDropdown>
+          <NavButtonDropdown clickHandler={() => { history.push('/my-music') }}>GET STARTED</NavButtonDropdown>
           <NavButtonDropdown clickHandler={() => { history.push('#') }} >PUBLISH</NavButtonDropdown>
         </div>
       </div>

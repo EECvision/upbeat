@@ -6,6 +6,6 @@
   /* -webkit-clip-path: polygon(0 0, 0 20%, 20% 30%, 20% 70%, 0 80%, 0 100%, 100% 100%, 100% 0); */
 @media screen and (max-width: 768px){
   .height{
-    height: 24rem;
+    height: 32rem;
   }
 }

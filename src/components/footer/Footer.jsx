@@ -9,10 +9,10 @@ import { withRouter } from 'react-router-dom';
 const Footer = ({history}) => {
   return (
     <div className="w-full flex flex-col items-center justify-start">
-      <div className="w-full flex justify-center bg-gray-100 px-4 md:px-4">
+      <div className="w-full flex justify-center bg-gray-300 px-4 md:px-4">
         <div className="w-full max-w-5xl flex flex-col md:flex-row items-center justify-between py-12 md:py-20">
           <div className="text-center md:text-left text-pink-700 text-3xl sm:text-4xl leading-tight mb-12 md:mb-0">Keep your life<br />smooth with our music today!</div>
-          <Button clickHandler={()=>history.push('/your-music')} inverted>Get Started</Button>
+          <Button clickHandler={()=>history.push('/my-music')} inverted>Get Started</Button>
         </div>
       </div>
       {/* <div className="w-full flex justify-center bg-gray-800"> */}
