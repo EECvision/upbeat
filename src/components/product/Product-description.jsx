@@ -12,9 +12,11 @@ const ProductDescription = () => {
           <div className="w-full text-center text-4xl mb-4 font-serif">For Artists and for Listeners</div>
           <div className="bg-pink-600 rounded py-1 px-12"/>
         </div>
-        <div className="text-center mb-5 font-serif">nuf9ja is an open site for every that loves music. We support young Nigerian artists
-           who are pationate about inspiring the mind through their songs
-            and We make their efforts availble to all listeners without cost
+        <div className="text-center mb-5 font-serif">
+          Upbeat is an open site for everybody that loves music. 
+          We support young artists who are passionate about inspiring 
+          the mind through their songs and 
+          we make their efforts available to all song lovers at <span className="font-bold">no</span> cost.
           </div>
         <div className="text-center text-xs">  --Whatever music does to the soul is what needs to be done to the soul--</div>
         

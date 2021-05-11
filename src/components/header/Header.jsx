@@ -4,7 +4,7 @@ import iconHamburger from '../../assets/icon-hamburger.svg';
 import iconClose from '../../assets/icon-close.svg';
 
 const NavButton = ({ children, clickHandler }) => (
-  <button onClick={clickHandler} className="text-gray-500 text-lg font-medium py-6 px-4 cursor-pointer hover:text-pink-500 focus:outline-none border-b-4 border-white hover:border-pink-600">{children}</button>
+  <button onClick={clickHandler} className="text-gray-600 text-lg font-medium py-6 px-4 cursor-pointer focus:outline-none border-b-4 border-white hover:border-pink-600">{children}</button>
 )
 
 const NavButtonDropdown = ({ children, clickHandler }) => (
@@ -30,10 +30,10 @@ const Header = ({ history }) => {
       <div className="w-full relative flex flex-col items-center">
         <div className="w-full flex justify-center bg-white z-10 px-4 md:px-0 shadow fixed top-0">
           <div style={{ fontFamily: 'sans-serif' }} className="w-full max-w-5xl flex justify-between items-center">
-            <Link to="/" className="text-gray-600 text-xl font-medium py-6 cursor-pointer">Nuf9ja</Link>
+            <Link to="/" className="text-gray-600 text-xl font-medium py-6 cursor-pointer">Upbeat</Link>
             <div className="hidden md:flex justify-center items-center">
-              <NavButton clickHandler={() => { history.push('/my-music') }}>GET STARTED</NavButton>
-              <Link to="#" className="text-pink-500 text-base font-medium py-2 px-8 cursor-pointer border-2 border-pink-500 rounded transition duration-200 ease-in-out transform hover:scale-95">PUBLISH</Link>
+              <NavButton clickHandler={() => { history.push('/my-music') }}>Play On!</NavButton>
+              <Link to="/admin" className="text-pink-600 text-lg font-medium py-1 px-6 cursor-pointer border-2 border-pink-600 rounded transition duration-200 ease-in-out transform hover:scale-95">Publish</Link>
             </div>
             <div className="flex md:hidden cursor-pointer font-light">
               {
@@ -46,8 +46,8 @@ const Header = ({ history }) => {
           </div>
         </div>
         <div className={`${dropdown && windowWidth < 768 ? 'h-64 ' : 'h-0'} w-full overflow-hidden fixed z-10 transition-all duration-500 delay-300 ease-in-out flex flex-col items-center bg-gray-100`}>
-          <NavButtonDropdown clickHandler={() => { history.push('/my-music') }}>GET STARTED</NavButtonDropdown>
-          <NavButtonDropdown clickHandler={() => { history.push('#') }} >PUBLISH</NavButtonDropdown>
+          <NavButtonDropdown clickHandler={() => { history.push('/my-music') }}>Play On!</NavButtonDropdown>
+          <NavButtonDropdown clickHandler={() => { history.push('/admin') }} >Publish</NavButtonDropdown>
         </div>
       </div>
     </div>
