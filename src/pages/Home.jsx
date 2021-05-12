@@ -16,10 +16,10 @@ function Home({ fetchMusic, togglePlaylist }){
             gospel: false , 
             highlife: false 
         }))
-        if(!(window.sessionStorage.reload === "false")){
+        // if(!(window.sessionStorage.reload === "false")){
             fetchMusic()
-        }
-        window.sessionStorage.reload = "false";
+        // }
+        // window.sessionStorage.reload = "false";
 
         togglePlaylist(false);
     },[fetchMusic, togglePlaylist])

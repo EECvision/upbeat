@@ -50,7 +50,7 @@ const UploadTab = ({ uploadFile, fileUploading, fileList, musicUrl, imageUrl, ca
       }
     };
     return new Promise((resolve, reject) => {
-      const uploadTask = storageRef.child(`nuf9ja/${path.replace(/.mp3|.mp4/i, '')}/${file.url.name}`).put(file.url,metadata);
+      const uploadTask = storageRef.child(`upbeat/${path.replace(/.mp3|.mp4/i, '')}/${file.url.name}`).put(file.url,metadata);
       uploadTask.on(firebas.storage.TaskEvent.STATE_CHANGED,
         (snapshot) => {
           const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;

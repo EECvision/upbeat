@@ -11,7 +11,7 @@ import {
 
 export function* fetchFiles() {
   try {
-    const baseFolderRef = storageRef.child('nuf9ja');
+    const baseFolderRef = storageRef.child('upbeat');
     const baseFolderSnapshot = yield baseFolderRef.listAll();
     const folderRef = baseFolderSnapshot.prefixes;
     const folderSnapshots = []
@@ -52,9 +52,9 @@ export function* deleteFile({ payload }) {
   const { fileMetadata, imageMetadata } = payload;
   let fileRef = '';
   try {
-    fileRef = storageRef.child(`nuf9ja/${fileMetadata.name.replace(/.mp3|.mp4/i, '')}/${imageMetadata.name}`);
+    fileRef = storageRef.child(`upbeat/${fileMetadata.name.replace(/.mp3|.mp4/i, '')}/${imageMetadata.name}`);
     yield fileRef.delete()
-    fileRef = storageRef.child(`nuf9ja/${fileMetadata.name.replace(/.mp3|.mp4/i, '')}/${fileMetadata.name}`);
+    fileRef = storageRef.child(`upbeat/${fileMetadata.name.replace(/.mp3|.mp4/i, '')}/${fileMetadata.name}`);
     yield fileRef.delete()
     yield put(deleteFileSuccess(payload))
   } catch (error) {

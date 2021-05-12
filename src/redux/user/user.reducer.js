@@ -14,7 +14,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 currentUser: action.payload,
             }
-        case userActionTypes.SIGN_IN_START:
+        case userActionTypes.GOOGLE_SIGN_IN_START:
             return {
                 ...state,
                 isSigninigIn: true,
@@ -29,7 +29,14 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 error: null,
                 success: 'successful'
             }
+        case userActionTypes.SIGN_OUT_SUCCESS:
+            return {
+                ...state,
+                currentUser: null,
+                error: null
+            }
         case userActionTypes.SIGN_IN_FAILURE:
+        case userActionTypes.SIGN_OUT_FAILURE:
             return {
                 ...state,
                 error: action.payload,

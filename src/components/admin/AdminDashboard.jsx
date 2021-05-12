@@ -1,7 +1,7 @@
 import React from 'react';
 import Category from './Category';
 import FileListContainer from './fileList-container';
-import { auth } from '../../firebase/firebase.utils';
+// import { auth } from '../../firebase/firebase.utils';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import {
@@ -12,14 +12,23 @@ import {
 import {
   setCategory,
 } from '../../redux/files/files.actions';
+import { signOutStart } from '../../redux/user/user.actions';
 
-const AdminDashboard = ({  setCategory, category, history, match, error }) => {
+const AdminDashboard = ({  setCategory, signOutStart, category, history, match, error }) => {
+
+  const handleSignOut = () => {
+    signOutStart();
+    setTimeout(()=>{
+      history.push('/')
+    },500)
+  }
+
 
   return (
-    <div className={`overflow-scroll border border-black w-full h-screen max-w-4xl shadow-2xl`}>
-      <div className="w-full px-6 flex flex-wrap items-center justify-evenly sm:justify-between py-6 text-lg border-b border-black">
-        <div onClick={() => history.push('/')} className="px-6 cursor-pointer border border-black">Nuf9ja</div>
-        <div onClick={() => auth.signOut().then(()=>history.push('/'))} className="px-6 border border-black cursor-pointer">Logout</div>
+    <div className={`overflow-auto border border-black w-full h-screen max-w-4xl shadow-2xl`}>
+      <div className="w-full px-6 flex flex-wrap items-center justify-evenly sm:justify-between py-12 text-lg border-b border-black">
+        <div onClick={() => history.push('/')} className="px-6 cursor-pointer border border-black">Upbeat</div>
+        <div onClick={() => handleSignOut()} className="px-6 border border-black cursor-pointer">Logout</div>
       </div>
       <div className="w-full h-64 flex flex-col md:flex-row items-end justify-end md:justify-center border border-black px-4 md:px-12 mb-36">
         <button
@@ -57,5 +66,6 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => ({
   setCategory: value => dispatch(setCategory(value)),
+  signOutStart: () => dispatch(signOutStart())
 })
 export default connect(mapStateToProps,mapDispatchToProps)(AdminDashboard);

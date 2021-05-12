@@ -84,7 +84,7 @@ const UploadForm = ({ isUploading, setCategory, category, match, history, error,
 
           <div className="w-full flex flex-col items-center justify-center mb-12">
             <div className="w-full text-left">
-              <div className="font-medium">ARTIST NAME</div>
+              <div className="font-medium">ARTIST NAME (optional)</div>
               <div>Description: This is the name of the song owner</div>
             </div>
             <input 
@@ -97,7 +97,7 @@ const UploadForm = ({ isUploading, setCategory, category, match, history, error,
 
           <div className="w-full flex flex-col items-center justify-center mb-12">
             <div className="w-full text-left">
-              <div className="font-medium">FILE COVER IMAGE</div>
+              <div className="font-medium">FILE COVER IMAGE (required)</div>
               <div>Description: This will be the preview poster/image</div>
             </div>
             <input
@@ -111,12 +111,12 @@ const UploadForm = ({ isUploading, setCategory, category, match, history, error,
               className="w-full h-8 p-1 border border-black focus:outline-none"
               onClick={handleimageUrl}
             >
-              {imageUrl ? 'file uploaded' : 'select poster'}
+              {imageUrl.length === 0 ? 'select poster' : 'poster selected'}
             </button>
           </div>
           <div className="w-full flex flex-col items-center justify-center mb-6">
             <div className="w-full text-left">
-              <div className="font-medium">FILE TRACK</div>
+              <div className="font-medium">FILE TRACK (required)</div>
               <div>Description: This is the source file you wish to Upload</div>
             </div>
             <input
@@ -130,7 +130,7 @@ const UploadForm = ({ isUploading, setCategory, category, match, history, error,
               className="w-full h-8 p-1 border border-black focus:outline-none"
               onClick={handlemusicUrl}
             >
-              {musicUrl ? 'file uploaded' : 'select file'}
+              {musicUrl.length === 0 ? 'select file' : 'file selected'}
             </button>
           </div>
         </div>

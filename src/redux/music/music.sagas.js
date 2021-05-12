@@ -14,7 +14,7 @@ export function* fetchMusicStart() {
 
 export function* fetchMusic() {
     try {
-        const baseFolderRef = storageRef.child('nuf9ja');
+        const baseFolderRef = storageRef.child('upbeat');
         const baseFolderSnapshot = yield baseFolderRef.listAll();
         const folderRef = baseFolderSnapshot.prefixes;
         const foldersSnapshot = [];

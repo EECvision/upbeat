@@ -2,8 +2,6 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from './pages/Home';
 import Main from './pages/Main';
-import About from './pages/About';
-import Contact from './pages/Contact';
 import UserSignIn from "./pages/UserSignIn";
 import Admin from './pages/Admin';
 import UploadForm from './components/admin/UploadForm';
@@ -26,8 +24,6 @@ function App({currentUser}) {
       <Switch>
         <Route exact path='/' component={Home}/>
         <Route path='/my-music' component={Main}/>
-        <Route exact path='/about' component={About}/>
-        <Route exact path='/contact' component={Contact}/>
         <Route path='/account/login' render={ props => !currentUser ? <UserSignIn {...props}/> : <Redirect to='/admin'/>}/>
         <Route exact path='/admin' render={ props => !currentUser ? <Redirect to='/account/login'/> : <Admin {...props}/>} />
         <Route path='/admin/upload/:id' component={UploadForm} />
