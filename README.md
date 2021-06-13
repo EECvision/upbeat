@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](.src\assets\upbeat.PNG)
+![](./src/assets/upbeat.PNG)
 
 
 ### Links
